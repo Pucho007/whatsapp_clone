@@ -1,3 +1,4 @@
+import 'package:camera/new/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsappclone/screens/setting_screen.dart';
 import 'package:whatsappclone/widgets/screens_widget.dart';
@@ -7,9 +8,10 @@ import 'camera_screen.dart';
 import 'chats_screen.dart';
 
 
-void main()=> runApp(Home_Whatsapp());
-
 class Home_Whatsapp extends StatefulWidget{
+  var cameras;
+
+  Home_Whatsapp(this.cameras);
   @override
   _Home_WhatsappState createState()=>_Home_WhatsappState();
 }
@@ -45,19 +47,19 @@ class _Home_WhatsappState extends State<Home_Whatsapp> with SingleTickerProvider
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
-          CameraScreen(),
+          TakePictureScreen(widget.cameras),
           ChatsScreen(),
           CallsScreen(),
           SettingsScreen()
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+     /* floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).accentColor,
         child: Icon(Icons.message,color: Colors.white,),
           onPressed: (){
 
     },
-      ),
+      ),*/
       );
   }
 }
